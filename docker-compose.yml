@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  tor-example:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: tor:0.4.6
+    volumes:
+      - ./private/torrc:/home/tor/.torrc:ro
+    ports:
+      - "9050:9050"
+    restart: always
