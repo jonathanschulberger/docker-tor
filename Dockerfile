@@ -1,6 +1,6 @@
-FROM alpine:3.14.1 AS build
+FROM alpine:3.16.2 AS build
 
-ARG TORVERSION=0.4.6
+ARG TORVERSION=0.4.7
 
 # pre-reqs
 RUN apk add --no-cache \
@@ -16,7 +16,7 @@ RUN cd /tmp/src && \
     make -j$(nproc)
 
 
-FROM alpine:3.14.1 AS tor-proxy
+FROM alpine:3.16.2 AS tor-proxy
 
 # pre-reqs
 RUN apk add --no-cache \
