@@ -1,9 +1,9 @@
-FROM alpine:3.16.2 AS build
+FROM alpine:3.17.2 AS build
 
 ARG TORVERSION=0.4.7
 
 # pre-reqs
-RUN apk add --no-cache \
+RUN apk add --update --no-cache \
     automake autoconf build-base git libevent-dev openssl-dev zlib-dev
 
 # retrieve
@@ -16,10 +16,10 @@ RUN cd /tmp/src && \
     make -j$(nproc)
 
 
-FROM alpine:3.16.2 AS tor-proxy
+FROM alpine:3.17.2 AS tor-proxy
 
 # pre-reqs
-RUN apk add --no-cache \
+RUN apk add --update --no-cache \
     curl libevent openssl zlib
 
 # create user to run tor
